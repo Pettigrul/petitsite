@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Business Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/atropos/css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #33ff66;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 3;
+        }
+
+        /* Rest of your CSS styles remain the same */
+
+        /* Atropos specific styles */
+        .atropos {
+            position: relative;
+            z-index: 2;
+        }
+
+        .atropos-inner {
+            border-radius: 0;
+        }
+
+        .content {
+            /* Remove the transform-style and perspective properties as Atropos will handle them */
+            transition: box-shadow 0.3s ease;
+            /* Other content styles remain */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <div class=""></div>
+            home.Pettigrul
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About Me</a>
+            <a href="">Services</a>
+            <a href="#">Articles & Researches</a>
+        </div>
+    </nav>
+
+    <!-- Wrap your content with Atropos -->
+    <div class="atropos my-atropos">
+        <!-- Scale container -->
+        <div class="atropos-scale">
+            <!-- Rotate container -->
+            <div class="atropos-rotate">
+                <!-- Inner container -->
+                <div class="atropos-inner">
+                    <div class="content">
+                        <div class="glitch-mask" data-atropos-offset="-5"></div>
+                        <div class="card-details">
+                            <h1 data-atropos-offset="5"><span>@</span>Pedro Teixeira</h1>
+                            <p data-atropos-offset="2">Infiltrating systems, exploiting vulnerabilities, and traversing the digital labyrinth. Where code meets shadow, algorithm meets stealth, and the shell commands true power.</p>
+                            <div class="card-credentials" data-atropos-offset="3">
+                                <div class="card-credential">root@petit-server:~#</div>
+                                <div class="card-email">contato@pedroteixeira.tech</div>
+                            </div>
+                            <div class="card-actions" data-atropos-offset="4">
+                                <button class="button" onclick="navigateTo('/contact')">Contact</button>
+                                <button class="button" onclick="navigateTo('/services')">Hire</button>
+                                <button class="button" onclick="navigateTo('/about')">Portfolio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/atropos"></script>
+    <script>
+        // Canvas setup
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Track mouse position
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Initialize Atropos
+        const myAtropos = Atropos({
+            el: '.my-atropos',
+            activeOffset: 40,
+            shadowScale: 1.05,
+            highlight: false,
+            onEnter() {
+                document.querySelector('.content').style.boxShadow =
+                    '0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(51, 255, 102, 0.3)';
+            }
+        });
+
+        function init() {
+            // Track mouse for background effects only
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            // Animation loop
+            animate();
+        }
+        function navigateTo(path) {
+            window.history.pushState({}, '', path);
+            window.dispatchEvent(new PopStateEvent('popstate'));
+        }
+
+        function animate() {
+            // Clear canvas
+            ctx.fillStyle = 'rgba(10, 10, 10, 1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add some subtle background effect with mouse movement
+            if (mouseX && mouseY) {
+                // Create a subtle glow effect that follows the mouse
+                const gradient = ctx.createRadialGradient(
+                    mouseX, mouseY, 0,
+                    mouseX, mouseY, 300
+                );
+                gradient.addColorStop(0, 'rgba(51, 255, 102, 0.03)');
+                gradient.addColorStop(1, 'rgba(10, 10, 10, 0)');
+
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // Add scan line effect (subtle)
+            for (let y = 0; y < canvas.height; y += 8) {
+                ctx.fillStyle = 'rgba(51, 255, 102, 0.01)';
+                ctx.fillRect(0, y, canvas.width, 1);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Start animation
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

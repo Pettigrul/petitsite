@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.card-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.my-atropos {
+  width: 100%;
+  max-width: 900px;
+  z-index: 2;
+}
+
+.business-card-content {
+  position: relative;
+  text-align: center;
+  padding: 40px;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(51, 255, 102, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(51, 255, 102, 0.2);
+  overflow: hidden;
+}
+
+.business-card-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 48%, rgba(51, 255, 102, 0.1) 50%, transparent 52%);
+  background-size: 10px 10px;
+  z-index: -1;
+}
+
+.business-card-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #33ff66;
+}
+
+.glitch-mask {
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  opacity: 0.1;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30 30h40v40H30z' fill='none' stroke='%2333ff66' stroke-width='2'/%3E%3Cpath d='M20 20h60v60H20z' fill='none' stroke='%2333ff66' stroke-width='1'/%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%2333ff66' stroke-width='0.5'/%3E%3C/svg%3E");
+  animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.05; transform: scale(1); }
+  100% { opacity: 0.15; transform: scale(1.1); }
+}
+
+.card-details {
+  position: relative;
+  z-index: 5;
+}
+
+h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #33ff66;
+  position: relative;
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+h1::after {
+  content: "0x504554";
+  position: absolute;
+  top: -20px;
+  right: -30px;
+  font-size: 16px;
+  opacity: 0.5;
+  color: #33ff66;
+}
+
+h1 span {
+  color: #aaafaa;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #aaafaa;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.card-credentials {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #aaafaa;
+  border-top: 1px solid rgba(51, 255, 102, 0.2);
+  padding-top: 15px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.card-credential {
+  color: #33ff66;
+  font-weight: 700;
+}
+
+.card-email {
+  opacity: 0.8;
+}
+
+.card-actions {
+  margin-top: 25px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #33ff66;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  border: 1px solid rgba(51, 255, 102, 0.5);
+  transition: all 0.3s ease;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(51, 255, 102, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.button:hover {
+  background-color: rgba(51, 255, 102, 0.1);
+  box-shadow: 0 0 20px rgba(51, 255, 102, 0.3);
+  transform: translateY(-2px);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button.primary {
+  background-color: #33ff66;
+  color: #0a0a0a;
+  font-weight: 700;
+  border: none;
+}
+
+.button.primary:hover {
+  background-color: #2be655;
+  box-shadow: 0 0 30px rgba(51, 255, 102, 0.5);
+}

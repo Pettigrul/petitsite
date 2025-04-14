@@ -1,0 +1,236 @@
+.site-footer {
+    background-color: #0a0a0a;
+    color: #aaafaa;
+    padding: 60px 0 30px;
+    position: relative;
+    border-top: 1px solid rgba(51, 255, 102, 0.2);
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .footer-logo a {
+    color: #33ff66;
+    text-decoration: none;
+  }
+
+  .footer-logo-symbol {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border: 2px solid #33ff66;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-logo-symbol::before {
+    content: ">";
+    color: #33ff66;
+    font-size: 14px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(51, 255, 102, 0.3);
+    color: #33ff66;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  .social-icon:hover {
+    background-color: #33ff66;
+    color: #0a0a0a;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .footer-section h3 {
+    color: #33ff66;
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #33ff66;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 12px;
+  }
+
+  .footer-section ul li a {
+    color: #aaafaa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 15px;
+  }
+
+  .footer-section ul li a::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #33ff66;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .footer-section ul li a:hover {
+    color: #33ff66;
+    padding-left: 20px;
+  }
+
+  .footer-section ul li a:hover::before {
+    opacity: 1;
+  }
+
+  .footer-section address {
+    font-style: normal;
+  }
+
+  .footer-section address p {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-section address p i {
+    color: #33ff66;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(51, 255, 102, 0.1);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    color: #aaafaa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: #33ff66;
+  }
+
+  .footer-decorations {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .footer-line {
+    height: 1px;
+    background-color: #33ff66;
+    opacity: 0.2;
+    width: 100%;
+  }
+
+  .footer-dots {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -3px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #33ff66;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  @media (max-width: 768px) {
+    .footer-top,
+    .footer-bottom {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      justify-content: center;
+    }
+
+    .footer-social {
+      justify-content: center;
+    }
+
+    .footer-section h3::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .footer-section ul li a {
+      padding-left: 0;
+    }
+
+    .footer-section ul li a::before {
+      display: none;
+    }
+
+    .footer-section ul li a:hover {
+      padding-left: 0;
+    }
+
+    .footer-section address p {
+      justify-content: center;
+    }
+  }
